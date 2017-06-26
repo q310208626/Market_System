@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<constant name="struts.enable.DynamicMethodInvocation" value="true"></constant>
+	<constant name="struts.objectFactory" value="spring" />
+
+	<package name="com.lsj.market.action" extends="struts-default">
+		<action name="registAction" class="com.lsj.market.action.UserRegistAction" method="execute" >
+			<result name="success">/index.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action> 
+		<action name="toRegistAction" class="com.lsj.market.action.ToRegistAction">
+			<result name="success">/web_resource/regist.jsp</result>
+		</action>
+		<action name="userDeleteAction" class="com.lsj.market.action.UserDeleteAction">
+			<result name="success">/web_resource/regist.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="userLoginAction" class="com.lsj.market.action.UserLoginAction">
+			<result name="success">/index.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="userLogoutAction" class="com.lsj.market.action.UserLogoutAction">
+			<result name="success">/index.jsp</result>
+		</action>
+		<action name="userUpdateAction" class="com.lsj.market.action.UserUpdateAction">
+			<result name="success" type="redirectAction">
+				<param name="actionName">toUserDetailAction</param>
+			</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="toUserDetailAction" class="com.lsj.market.action.ToUserDetailAction">
+			<result name="success">/web_resource/userdetail.jsp</result>
+		</action>
+		<action name="toIndexAction" class="com.lsj.market.action.ToIndexAction">
+			<result name="success">/index.jsp</result>
+		</action>
+	</package>
+</struts>

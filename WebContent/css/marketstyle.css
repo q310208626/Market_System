@@ -1,0 +1,90 @@
+@CHARSET "UTF-8";
+body{
+	margin: 0;
+	padding: 0;
+	text-align: center;
+}
+#content{
+	clear:both;
+	width:1000px;
+	margin: 10px auto;
+	background-color: #90f1ae;
+	text-align: center;
+}
+
+
+#content_head{
+	
+}
+/* 头部图片 */
+.head_pictrue{
+	width: 20%;
+	height:100px;
+	float: left;
+}
+.head_pictrue img{
+	width: 100%;
+	height:100%;
+}
+
+/* 头部菜单 */
+.head_menu{
+	list-style:none;
+	height:100px;
+	display: inline-block;
+}
+
+.head_menu ul{
+	margin: auto;
+	line-height:100px;
+	overflow: hidden;
+	
+}
+
+.head_menu li{
+	list-style:none;
+	float: left;
+	margin:0 10px;
+}
+
+/* 内容 */
+#content_main{
+	clear:both;
+	heith:400px;
+	background-color: #15a;	
+	overflow: hidden;
+}
+
+.catagory_div{
+	width:20%;
+	height:500px;
+	background-color: #98b2ff;
+}
+
+.catagory_div ul{
+	list-style: none;
+	float: left;
+}
+
+.catagory_div ul li{
+	margin-top: 10px;
+}
+
+/* 商品显示 */
+.content_show{
+	width:80%;
+	background-color: #6c6cd0;
+}
+
+/* UserDetail.jsp */
+form{
+	text-align:center;
+	margin: 0 auto;
+}
+table{
+	margin: auto auto;
+}
+table tr{
+	margin: auto auto;
+	background: #4aa;
+}
