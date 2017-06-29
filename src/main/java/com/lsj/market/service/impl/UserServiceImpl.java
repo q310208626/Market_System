@@ -43,15 +43,13 @@ public class UserServiceImpl implements UserService{
 		return userDaoImpl.queryByAccAndPass(user);
 	}
 	
-
+	
 	@Override
 	public User queryUserInfo(int id) {
 		// TODO Auto-generated method stub
 		return userDaoImpl.queryById(id);
 	}
 	
-	
-
 	@Override
 	public void updateUserInfo(User user) {
 		// TODO Auto-generated method stub
@@ -60,6 +58,27 @@ public class UserServiceImpl implements UserService{
 
 	public UserDaoImpl getUserDaoImpl() {
 		return userDaoImpl;
+	}
+	
+	 
+
+	@Override
+	public boolean updateUserPassword(User user, String newPwd, String newPwdConf) {
+		// TODO Auto-generated method stub
+		
+		if ((newPwd!=null||!newPwd.equals(""))&&(newPwdConf!=null||!newPwdConf.equals(""))){
+			if (newPwd.equals(newPwdConf)) {
+				List<User> userList=userDaoImpl.queryByAccAndPass(user);
+				if (userList.size()>0) {
+					user=userDaoImpl.queryById(userList.get(0).getId());
+					System.out.println(user.getUserDetail());
+					user.setPassword(newPwd);
+					userDaoImpl.save(user);
+					return true;
+				}
+			}
+		}
+		return false;
 	}
 
 	public void setUserDaoImpl(UserDaoImpl userDaoImpl) {
