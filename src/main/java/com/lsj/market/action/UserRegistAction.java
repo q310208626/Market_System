@@ -8,6 +8,7 @@ import com.lsj.market.bean.User;
 import com.lsj.market.bean.UserDetail;
 import com.lsj.market.dao.impl.UserDaoImpl;
 import com.lsj.market.service.impl.UserServiceImpl;
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class UserRegistAction extends ActionSupport{
@@ -17,7 +18,7 @@ public class UserRegistAction extends ActionSupport{
 	@Autowired
 	private UserDetail userDetail;
 	
-	private ApplicationContext context;
+	private String action="user_regist";
 	
 	@Override
 	public String execute() throws Exception {
@@ -26,6 +27,7 @@ public class UserRegistAction extends ActionSupport{
 		user.setUserDetail(userDetail);
 		result=(Integer)userServiceImpl.registService(user);
 		if(result>0){
+			ActionContext.getContext().getSession().put("action", action);
 			return "success";
 		}
 		return "error";

@@ -10,22 +10,24 @@ import com.opensymphony.xwork2.ActionSupport;
 public class UserUpdateAction extends ActionSupport{
 	@Autowired
 	private User user;
-	@Autowired
-	private UserDetail userDetail;
+	
 	@Autowired
 	private UserServiceImpl userServiceImpl;
 	
 	@Override
 	public String execute() throws Exception {
 		// TODO Auto-generated method stub
-//		setUser(userServiceImpl.queryUserInfo(id));
+
 		try {
-			setUser(userServiceImpl.queryUserInfo(user.getId()));
+			/*User tempUser=userServiceImpl.queryUserInfo(getUser().getId());
+			System.out.println(tempUser.getRole());
+			getUser().setRole(tempUser.getRole());*/
+//			setUser(userServiceImpl.queryUserInfo(user.getId()));
 //			getUser().getUserDetail().setAddress(getUserDetail().getAddress());
-			getUser().getUserDetail().setName(getUserDetail().getName());
+//			getUser().getUserDetail().setName(getUserDetail().getName());
 //			getUser().getUserDetail().setPhone(getUserDetail().getPhone());
-			getUser().getUserDetail().setSex(getUserDetail().getSex());
-			userServiceImpl.updateUserInfo(user);
+//			getUser().getUserDetail().setSex(getUserDetail().getSex());
+			userServiceImpl.updateUserInfo(getUser());
 			return SUCCESS;
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -40,12 +42,7 @@ public class UserUpdateAction extends ActionSupport{
 		this.user = user;
 	}
 	
-	public UserDetail getUserDetail() {
-		return userDetail;
-	}
-	public void setUserDetail(UserDetail userDetail) {
-		this.userDetail = userDetail;
-	}
+
 	public UserServiceImpl getUserServiceImpl() {
 		return userServiceImpl;
 	}
