@@ -6,6 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link type="text/css" href="${pageContext.request.contextPath}/css/marketstyle.css" rel="stylesheet">
+
 <title>注册页面</title>
 </head>
 <body>

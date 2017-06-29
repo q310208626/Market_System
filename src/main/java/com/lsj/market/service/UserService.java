@@ -54,4 +54,5 @@ public interface UserService {
 	public void updateUserInfo(User user);
 	
 	public boolean updateUserPassword(User user,String newPwd,String newPwdConf);
+	
 }
