@@ -2,7 +2,10 @@ package com.lsj.market.bean;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -18,8 +21,9 @@ public class Flower {
 	private String name;
 	@Column
 	private float price;
-	@Column
 	
+	@ManyToOne(fetch=FetchType.EAGER)
+	@JoinColumn(name="flowersCateId",nullable=true)
 	private FlowersCate flowersCate;
 	@Column
 	private String pictrueUrl;

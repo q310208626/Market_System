@@ -1,0 +1,16 @@
+@CHARSET "UTF-8";
+body{
+	margin: 0px;
+	padding: 0px;
+	text-align: center;
+}
+
+table {
+	min-width:50px;
+	margin: 0 auto;
+}
+
+table tr{
+	margin: auto auto;
+	background: #4aa;
+}

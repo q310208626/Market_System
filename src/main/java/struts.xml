@@ -8,7 +8,7 @@
 
 	<package name="com.lsj.market.action" extends="struts-default">
 		<action name="registAction" class="com.lsj.market.action.UserRegistAction" method="execute" >
-			<result name="success">/index.jsp</result>
+			<result name="success">/web_resource/useraction_success.jsp</result>
 			<result name="error">/error.jsp</result>
 		</action> 
 		<action name="toRegistAction" class="com.lsj.market.action.ToRegistAction">
@@ -19,7 +19,7 @@
 			<result name="error">/error.jsp</result>
 		</action>
 		<action name="userLoginAction" class="com.lsj.market.action.UserLoginAction">
-			<result name="success">/index.jsp</result>
+			<result name="success">/web_resource/useraction_success.jsp</result>
 			<result name="error">/error.jsp</result>
 		</action>
 		<action name="userLogoutAction" class="com.lsj.market.action.UserLogoutAction">
@@ -27,12 +27,22 @@
 		</action>
 		<action name="userUpdateAction" class="com.lsj.market.action.UserUpdateAction">
 			<result name="success" type="redirectAction">
-				<param name="actionName">toUserDetailAction</param>
+				<param name="actionName">getUserDetailAction</param>
 			</result>
 			<result name="error">/error.jsp</result>
 		</action>
 		<action name="toUserDetailAction" class="com.lsj.market.action.ToUserDetailAction">
 			<result name="success">/web_resource/userdetail.jsp</result>
+		</action>
+		<action name="getUserDetailAction" class="com.lsj.market.action.GetUserDetailAction">
+			<result name="success">/web_resource/update_userInfo.jsp</result>
+		</action>
+		<action name="getUserPwdAction" class="com.lsj.market.action.GetUserPwdAction">
+			<result name="success">/web_resource/update_userpwd.jsp</result>
+		</action>
+		<action name="userUpdatePwdAction" class="com.lsj.market.action.UserUpdatePwdAction">
+			<result name="success">/web_resource/useraction_success.jsp</result>
+			<result name="error">/error.jsp</result>
 		</action>
 		<action name="toIndexAction" class="com.lsj.market.action.ToIndexAction">
 			<result name="success">/index.jsp</result>
