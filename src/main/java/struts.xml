@@ -7,45 +7,84 @@
 	<constant name="struts.objectFactory" value="spring" />
 
 	<package name="com.lsj.market.action" extends="struts-default">
-		<action name="registAction" class="com.lsj.market.action.UserRegistAction" method="execute" >
-			<result name="success">/web_resource/useraction_success.jsp</result>
-			<result name="error">/error.jsp</result>
-		</action> 
+
 		<action name="toRegistAction" class="com.lsj.market.action.ToRegistAction">
 			<result name="success">/web_resource/regist.jsp</result>
 		</action>
-		<action name="userDeleteAction" class="com.lsj.market.action.UserDeleteAction">
+		<action name="toIndexAction" class="com.lsj.market.action.ToIndexAction">
+			<result name="success">/index.jsp</result>
+		</action>	
+	</package>
+	
+	<!--User 管理-->
+	<package name="com.lsj.market.action.user" extends="struts-default">
+		<action name="registAction" class="com.lsj.market.action.user.UserRegistAction" method="execute" >
+			<result name="success">/web_resource/useraction_success.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action> 
+		<action name="userDeleteAction" class="com.lsj.market.action.user.UserDeleteAction">
 			<result name="success">/web_resource/regist.jsp</result>
 			<result name="error">/error.jsp</result>
 		</action>
-		<action name="userLoginAction" class="com.lsj.market.action.UserLoginAction">
+		<action name="userLoginAction" class="com.lsj.market.action.user.UserLoginAction">
 			<result name="success">/web_resource/useraction_success.jsp</result>
 			<result name="error">/error.jsp</result>
 		</action>
-		<action name="userLogoutAction" class="com.lsj.market.action.UserLogoutAction">
+		<action name="userLogoutAction" class="com.lsj.market.action.user.UserLogoutAction">
 			<result name="success">/index.jsp</result>
 		</action>
-		<action name="userUpdateAction" class="com.lsj.market.action.UserUpdateAction">
+		<action name="userUpdateAction" class="com.lsj.market.action.user.UserUpdateAction">
 			<result name="success" type="redirectAction">
 				<param name="actionName">getUserDetailAction</param>
 			</result>
 			<result name="error">/error.jsp</result>
 		</action>
-		<action name="toUserDetailAction" class="com.lsj.market.action.ToUserDetailAction">
-			<result name="success">/web_resource/userdetail.jsp</result>
+		<action name="toUserDetailAction" class="com.lsj.market.action.user.ToUserDetailAction">
+			<result name="customer">/web_resource/userdetail.jsp</result>
+			<result name="rootter">/web_resource/rootdetail.jsp</result>
+			<result name="error">/error.jsp</result>
 		</action>
-		<action name="getUserDetailAction" class="com.lsj.market.action.GetUserDetailAction">
+		<action name="getUserDetailAction" class="com.lsj.market.action.user.GetUserDetailAction">
 			<result name="success">/web_resource/update_userInfo.jsp</result>
 		</action>
-		<action name="getUserPwdAction" class="com.lsj.market.action.GetUserPwdAction">
+		<action name="getUserPwdAction" class="com.lsj.market.action.user.GetUserPwdAction">
 			<result name="success">/web_resource/update_userpwd.jsp</result>
 		</action>
-		<action name="userUpdatePwdAction" class="com.lsj.market.action.UserUpdatePwdAction">
+		<action name="userUpdatePwdAction" class="com.lsj.market.action.user.UserUpdatePwdAction">
 			<result name="success">/web_resource/useraction_success.jsp</result>
 			<result name="error">/error.jsp</result>
 		</action>
-		<action name="toIndexAction" class="com.lsj.market.action.ToIndexAction">
-			<result name="success">/index.jsp</result>
+	</package>
+	
+	<!-- Flower-->
+	<package name="com.lsj.market.action.flower" extends="struts-default">
+		<!-- 跳转到Flower管理页面 -->
+		<action name="toFlowerManagerAction" class="com.lsj.market.action.flower.ToFlowerManagerAction">
+			<result name="success">/web_resource/flower_resource/flower_manager.jsp</result>
+		</action>
+		<action name="getFlowerInfoAction" class="com.lsj.market.action.flower.GetFlowerInfoAction">
+			<result name="success">/web_resource/flower_resource/flower_show.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="toFlowerDirectionAction" class="com.lsj.market.action.flower.ToFlowerDirectionAction">
+			<result name="flowerinfo" type="redirectAction">
+				<param name="actionName">getFlowerInfoAction</param>
+			</result>
+			<result name="floweradd">/web_resource/flower_resource/flower_add.jsp</result>
+			<result name="flowerupdate">/web_resource/flower_resource/flower_update.jsp</result>
+			<result name="flowercate">/web_resource/flower_resource/flower_cate.jsp</result>
+		</action>
+		<action name="flowerAddAction" class="com.lsj.market.action.flower.FlowerAddAction">
+			<result name="success">/web_resource/flower_resource/flower_show.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="flowerCateAddAction" class="com.lsj.market.action.flower.FlowerCateAddAction">
+			<result name="success">/web_resource/flower_resource/flower_cate.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="getFlowerCateAction" class="com.lsj.market.action.flower.GetFlowerCateAction" >
+			<result name="success">/web_resource/flower_resource/flower_cate_show.jsp</result>
+			<result name="error">/error.jsp</result>
 		</action>
 	</package>
 </struts>

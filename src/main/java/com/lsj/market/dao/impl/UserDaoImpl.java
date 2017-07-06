@@ -88,6 +88,12 @@ public class UserDaoImpl implements UserDao{
 	private Session getSession(){
 		return SessionFactory.getCurrentSession();
 	}
-	
 
+	public SessionFactory getSessionFactory() {
+		return SessionFactory;
+	}
+	
+	public void setSessionFactory(SessionFactory sessionFactory) {
+		SessionFactory = sessionFactory;
+	}
 }

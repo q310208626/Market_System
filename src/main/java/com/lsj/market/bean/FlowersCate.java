@@ -1,10 +1,13 @@
 package com.lsj.market.bean;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
@@ -19,6 +22,7 @@ public class FlowersCate {
 	private int id;
 	@Column
 	private String category;
+	
 	public int getId() {
 		return id;
 	}

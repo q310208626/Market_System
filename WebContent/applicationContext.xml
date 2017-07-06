@@ -24,8 +24,9 @@
 	<!-- sessionFactory bean 配置数据库源/hibernate配置文件位置/hibernate映射文件 -->
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<!-- 数据源 -->
 		<property name="dataSource" ref="dataSource"></property>
-		<!-- <property name="configLocation" value="classpath:hibernate.cfg.xml"></property> -->
+		<!-- hibernate配置 -->
 		<property name="hibernateProperties">
 			<props>
 				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
@@ -42,9 +43,10 @@
 			<property name="packagesToScan">
             <list>
                 <value>com.lsj.market.bean</value>
+                <value>com.lsj.market.dao.impl</value>
+                <value>com.lsj.market.service.impl</value>
             </list>
         </property>  
-
 	</bean>
 	<!-- spring声明式事物 -->
 	<bean id="transactionManager"
@@ -59,7 +61,7 @@
 	</tx:advice>
 	<aop:config proxy-target-class="true">
 		<aop:pointcut id="txPointcut"
-			expression="execution (* com.lsj.market.action.*.*(..))" />
+			expression="execution (* com.lsj.market.action..*.*(..))" />
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="txPointcut" />
 	</aop:config>
 </beans>

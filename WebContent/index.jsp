@@ -23,8 +23,8 @@
 						<li><a href="${pageContext.request.contextPath}/web_resource/login.jsp" target="log_reg_ifr">登录</a></li>
 					</s:if>
 					<s:else>
-						<li><a href='<s:url action="toUserDetailAction"></s:url>'><s:property value="#session.userAccount"/></a></li>
-						<li><a href="<s:url action="userLogoutAction"/>">注销</a></li>
+						<li><a href="toUserDetailAction?user.id=${userId}"><s:property value="#session.userAccount"/></a></li>
+						<li><a href="userLogoutAction">注销</a></li>
 					</s:else>
 					
 				</ul>
