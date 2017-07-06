@@ -12,13 +12,17 @@
 				<tr align="center">
 					<td>id</td>
 					<td>商品种类</td>
-					<td>操作</td>
+					<td colspan="2">操作</td>
 				</tr>
 				<s:iterator value="flowersCateList">
-					<tr>
-						<td width="10%" ><s:property value="id" /></td>
-						<td width="60%"><s:property value="category" /></td>
-						<td width="10"><a href="#">删除</a></td>
+					
+					<tr >
+						<s:form theme="simple" action="flowerCateUpdateAction">
+						<td width="10%" ><s:textfield value="%{id}" readonly="true" name="flowersCate.id" theme="simple"/></td>
+						<td width="60%"><s:textfield value="%{category}" theme="simple" name="flowersCate.category"></s:textfield> </td>
+						<td width="10%"><s:submit theme="simple" value="更新" style="width: 100%"></s:submit></td>
+						<td width="10%" align="center"><a href="flowerCateDeleteAction?flowersCate.id=<s:property value="id" />">删除</a></td>
+						</s:form>
 					</tr>
 				</s:iterator>
 			</table>

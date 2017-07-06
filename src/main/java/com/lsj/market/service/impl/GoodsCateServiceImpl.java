@@ -35,13 +35,13 @@ public class GoodsCateServiceImpl implements GoodsCateService{
 	@Override
 	public void deleteFlowerCate(int id) {
 		// TODO Auto-generated method stub
-		
+		goodsCateDaoImpl.delete(id);
 	}
 
 	@Override
 	public void updateCate(FlowersCate flowersCate) {
 		// TODO Auto-generated method stub
-		
+		goodsCateDaoImpl.update(flowersCate);
 	}
 
 	public GoodsCateDaoImpl getGoodsCateDaoImpl() {
