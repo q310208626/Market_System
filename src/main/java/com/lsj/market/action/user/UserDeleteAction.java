@@ -1,4 +1,4 @@
-package com.lsj.market.action;
+package com.lsj.market.action.user;
 
 import javax.persistence.CascadeType;
 
