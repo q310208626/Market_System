@@ -52,6 +52,12 @@ public class GoodsCateServiceImpl implements GoodsCateService{
 		this.goodsCateDaoImpl = goodsCateDaoImpl;
 	}
 
+	@Override
+	public FlowersCate getFlowersCateById(int id) {
+		// TODO Auto-generated method stub
+		return goodsCateDaoImpl.load(id);
+	}
 
+	
 	
 }

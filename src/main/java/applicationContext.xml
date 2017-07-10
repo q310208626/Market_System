@@ -13,6 +13,7 @@
 	">
 
 	<context:component-scan base-package="com.lsj.market" />
+	
 	<!-- 数据库源 -->
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close">
@@ -35,19 +36,17 @@
 				<prop key="hibernate.hbm2ddl.auto">update</prop>
 				<prop key="hibernate.current_session_context_class">org.springframework.orm.hibernate4.SpringSessionContext
 				</prop>
-				<prop key="hibernate.connection.characterEncoding">UTF-8</prop>
-				
+				<prop key="hibernate.connection.characterEncoding">UTF-8</prop>	
 			</props>
 		</property>
 		
-			<property name="packagesToScan">
+		<property name="packagesToScan">
             <list>
                 <value>com.lsj.market.bean</value>
-                <value>com.lsj.market.dao.impl</value>
-                <value>com.lsj.market.service.impl</value>
             </list>
         </property>  
 	</bean>
+	
 	<!-- spring声明式事物 -->
 	<bean id="transactionManager"
 		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
@@ -56,12 +55,14 @@
 	<tx:advice id="txAdvice" transaction-manager="transactionManager">
 		<tx:attributes>
 			<tx:method name="get*" read-only="true" />
-			<tx:method name="*" />
+			<tx:method name="*" /> 
+			
 		</tx:attributes>
 	</tx:advice>
+	 <tx:annotation-driven transaction-manager="transactionManager" />  
 	<aop:config proxy-target-class="true">
 		<aop:pointcut id="txPointcut"
-			expression="execution (* com.lsj.market.action..*.*(..))" />
+			expression="execution (* com.lsj.market.action..*.*(..))"/>
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="txPointcut" />
 	</aop:config>
 </beans>

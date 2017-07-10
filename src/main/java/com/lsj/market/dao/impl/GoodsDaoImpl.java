@@ -55,6 +55,18 @@ public class GoodsDaoImpl implements GoodsDao{
 		// TODO Auto-generated method stub
 		return getSession().save(flower);
 	}
+	
+	
+
+
+
+	@Override
+	public Flower queryById(int id) {
+		// TODO Auto-generated method stub
+		Flower tempFlower=null;
+		tempFlower=(Flower) getSession().load(Flower.class, id);
+		return tempFlower;
+	}
 
 
 

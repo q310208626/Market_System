@@ -49,6 +49,14 @@ public class GoodsCateDaoImpl implements GoodsCateDao{
 		// TODO Auto-generated method stub
 		getSession().update(flowersCate);
 	}
+	
+	
+
+	@Override
+	public FlowersCate load(int id) {
+		// TODO Auto-generated method stub
+		return (FlowersCate) getSession().load(FlowersCate.class, id);
+	}
 
 	public SessionFactory getSessionFactory() {
 		return sessionFactory;

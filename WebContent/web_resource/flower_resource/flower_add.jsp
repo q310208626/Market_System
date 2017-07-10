@@ -8,19 +8,44 @@
 <title>商品添加</title>
 </head>
 <body>
-	商品添加
-	<form action="">
-		<table>
-			<tr>
-				<td colspan="2" align="center">添加商品</td>
-			</tr>
-			<tr>
-				<td><s:textfield label="花名" name="flower.name"></s:textfield></td>
-			</tr>
-			<tr>
-				<td><s:textfield label="价格" name="flower.name"></s:textfield></td>
-			</tr>
-		</table>
-	</form>
+	<div>
+		<div>
+			<s:form action="flowerAddAction" onsubmit="return checkText()" enctype="multipart/form-data"  method="post">
+				<table border="1px" >
+					<tr align="center" >
+						<td colspan="5">商品添加</td>
+					</tr>
+					<tr>
+						<td>商品名称</td>
+						<td>价格</td>
+						<td>商品种类</td>
+						<td>商品图片</td>
+						<td>添加</td>
+					</tr>
+					<tr>
+						<td><s:textfield id="nameTextField" name="flower.name" theme="simple" ></s:textfield> </td>
+						<td><s:textfield id="priceTextField" name="flower.price" onkeydown="value=value.replace(/[^\d]/g,'')" theme="simple"></s:textfield> </td>
+						<td><s:select name="cateId" list="cateList" listKey="id" listValue="category" theme="simple" style="width: 100%" headerValue="未知" headerKey=""></s:select> </td>
+						<td><s:file name="flowerimage" theme="simple" ></s:file> </td>
+						<td><s:submit theme="simple" value="添加" style="width: 100%" ></s:submit> </td>
+					</tr>
+				</table>
+				
+			</s:form>
+		</div>
+	</div>
 </body>
+	<script type="text/javascript">
+		function checkText(){
+			var nameTextField=document.getElementById("nameTextField");
+			var priceTextField=document.getElementById("priceTextField");
+			
+			var name=nameTextField.value;
+			var price=priceTextField.value;
+			if(name==null||price==null){
+				return false;
+			}
+			return true;
+		}
+	</script>
 </html>

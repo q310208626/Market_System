@@ -18,4 +18,6 @@ public interface GoodsService {
 	
 	public Serializable addFlower(Flower flower);
 	
+	public Flower queryFlowerById(int id);
+	
 }

@@ -39,5 +39,15 @@ public interface GoodsCateService {
 	* @return void 
 	* @throws 
 	*/
-	public void updateCate(FlowersCate flowersCate); 
+	public void updateCate(FlowersCate flowersCate);
+	
+	/** 
+	* @Title: getFlowersCateById 
+	* @Description: TODO 通过id获取花（商品）种类
+	* @param @param id
+	* @param @return     
+	* @return FlowersCate 
+	* @throws 
+	*/
+	public FlowersCate getFlowersCateById(int id);
 }

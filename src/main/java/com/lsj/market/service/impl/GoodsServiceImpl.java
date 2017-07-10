@@ -25,7 +25,7 @@ public class GoodsServiceImpl implements GoodsService{
 	@Override
 	public void deleteFlower(int id) {
 		// TODO Auto-generated method stub
-		
+		goodsDaoImpl.deleteFlower(id);
 	}
 
 
@@ -33,7 +33,7 @@ public class GoodsServiceImpl implements GoodsService{
 	@Override
 	public void updateFlower(Flower flower) {
 		// TODO Auto-generated method stub
-		
+		goodsDaoImpl.updateFlower(flower);
 	}
 	
 
@@ -42,6 +42,14 @@ public class GoodsServiceImpl implements GoodsService{
 	public Serializable addFlower(Flower flower) {
 		// TODO Auto-generated method stub
 		return goodsDaoImpl.save(flower);
+	}
+
+
+	@Override
+	public Flower queryFlowerById(int id) {
+		// TODO Auto-generated method stub
+		Flower flower=goodsDaoImpl.queryById(id);
+		return flower;
 	}
 
 

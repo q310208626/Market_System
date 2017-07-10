@@ -39,4 +39,14 @@ public interface GoodsCateDao {
 	* @throws 
 	*/
 	public void update(FlowersCate flowersCate);
+	
+	/** 
+	* @Title: load 
+	* @Description: TODO 通过id获取Cate
+	* @param @param id
+	* @param @return     
+	* @return FlowersCate 
+	* @throws 
+	*/
+	public FlowersCate load(int id);
 }

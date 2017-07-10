@@ -53,4 +53,14 @@ public interface GoodsDao {
 	* @throws 
 	*/
 	public Serializable save(Flower flower);
+	
+	/** 
+	* @Title: queryById 
+	* @Description: TODO 通过id查找
+	* @param @param id
+	* @param @return     
+	* @return Flower 
+	* @throws 
+	*/
+	public Flower queryById(int id);
 }
