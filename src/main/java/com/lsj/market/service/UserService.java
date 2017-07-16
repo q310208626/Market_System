@@ -44,15 +44,42 @@ public interface UserService {
 	
 	/** 
 	* @Title: queryUserInfo 
-	* @Description: 通过Id查询获取User
+	* @Description: 通过Id查询获取User，这个信息没被用到的属性是不被加载
 	* @param id 
 	* @return User 
 	* @throws 
 	*/
 	public User queryUserInfo(int id);
 	
+	/** 
+	* @Title: queryUserInfoGet 
+	* @Description: TODO 根据Id获取完整用户信息
+	* @param @param id
+	* @param @return     
+	* @return User 
+	* @throws 
+	*/
+	public User queryUserInfoGet(int id);
+	
+	/** 
+	* @Title: updateUserInfo 
+	* @Description: TODO 更新用户信息 
+	* @param @param user     
+	* @return void 
+	* @throws 
+	*/
 	public void updateUserInfo(User user);
 	
+	/** 
+	* @Title: updateUserPassword 
+	* @Description: TODO更新用户密码
+	* @param @param user
+	* @param @param newPwd
+	* @param @param newPwdConf
+	* @param @return     
+	* @return boolean 
+	* @throws 
+	*/
 	public boolean updateUserPassword(User user,String newPwd,String newPwdConf);
 	
 }

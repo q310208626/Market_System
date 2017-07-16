@@ -26,7 +26,6 @@ public class UserLoginAction extends ActionSupport{
 			if (useList.size()>0) {
 				User user=useList.get(0);
 				Map session=ActionContext.getContext().getSession();
-				System.out.println(user.getId());
 				session.put("userId", user.getId());
 				session.put("userAccount", user.getAccount());
 				session.put("action", action);

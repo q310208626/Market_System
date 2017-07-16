@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.struts2.ServletActionContext;
@@ -25,8 +26,12 @@ import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Log4jConfigurer;
 
+import com.lsj.market.action.order.GetMarketCarAction;
 import com.lsj.market.bean.Flower;
 import com.lsj.market.bean.FlowersCate;
+import com.lsj.market.dao.impl.MarketCarDaoImpl;
+import com.lsj.market.service.impl.GoodsServiceImpl;
+import com.lsj.market.service.impl.UserServiceImpl;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -34,23 +39,23 @@ import com.lsj.market.bean.FlowersCate;
 @TransactionConfiguration(transactionManager = "transactionManager", defaultRollback = true)
 @Transactional
 public class HibernateTest {
-	/*Logger logger=Logger.getLogger(this.getClass());
-	static{
-		try {
-			Log4jConfigurer.initLogging("classpath:log4j.properties");
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			System.out.println("Log4j Init Failed");
-			e.printStackTrace();
-		}
-	}*/
+	
 	@Autowired
 	private SessionFactory sessionFactory;
+	@Autowired
+	private UserServiceImpl userServiceImpl;
+	@Autowired
+	private GoodsServiceImpl goodsServiceImpl;
 	
-	File flowerPicture;
-	String flowerPictureFileName;
-	String flowerPictureContentType;
-	String savePath="/home/hdmi/Pictures/uploadImages";
+	private Flower flower;
+	private User user;
+	
+	@Autowired
+	private MarketCarDaoImpl marketCarDaoImpl;
+	private MarketCar marketCar;
+	
+	
+	
 	public Session getSession(){
 		return sessionFactory.getCurrentSession();
 	}
@@ -58,51 +63,20 @@ public class HibernateTest {
 	
 	@Before
 	public void before() {
-		flowerPicture=new File("/home/hdmi/Pictures/7495886aa4d11968cf7135bcd7023c72.jpg");
-		flowerPictureFileName=flowerPicture.getName();
-		int lastDod=flowerPictureFileName.lastIndexOf('.');
-		flowerPictureContentType=flowerPictureFileName.substring(lastDod, flowerPictureFileName.length());
-		System.out.println(flowerPictureFileName);
-		System.out.println(flowerPictureContentType);
+		
+		
 	}
 
 
 	@Test
 	public void test() {
-		String newFileNameString=saveUploadImages(flowerPicture,flowerPictureFileName,flowerPictureContentType);
-		System.out.println(newFileNameString);
+		
 	}
 
 	@After
 	public void after() {	
 	}
 	
-	public String saveUploadImages(File uploadImage,String imageName,String ContentType){
-		String newImageName="";
-		if(uploadImage!=null){
-			if(imageName!=null&&!imageName.isEmpty()){
-				Date uploadDate=new Date();
-				SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMddhhmmss");
-				newImageName=sdf.format(uploadDate)+imageName;
-				String realPath=savePath;
-				
-				File saveFile=new File(realPath, newImageName);
-				if(!saveFile.getParentFile().exists()){
-					saveFile.getParentFile().mkdirs();
-				}
-				
-				try {
-					FileUtils.copyFile(uploadImage,saveFile);
-					return newImageName;
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-					return null;
-				}
-			}
-		}
-		return null;
-	}
 
 	public SessionFactory getSessionFactory() {
 		return sessionFactory;
@@ -110,5 +84,36 @@ public class HibernateTest {
 
 	public void setSessionFactory(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
-	}	
+	}
+
+
+	public UserServiceImpl getUserServiceImpl() {
+		return userServiceImpl;
+	}
+
+
+	public void setUserServiceImpl(UserServiceImpl userServiceImpl) {
+		this.userServiceImpl = userServiceImpl;
+	}
+
+
+	public GoodsServiceImpl getGoodsServiceImpl() {
+		return goodsServiceImpl;
+	}
+
+
+	public void setGoodsServiceImpl(GoodsServiceImpl goodsServiceImpl) {
+		this.goodsServiceImpl = goodsServiceImpl;
+	}
+
+
+	public MarketCarDaoImpl getMarketCarDaoImpl() {
+		return marketCarDaoImpl;
+	}
+
+
+	public void setMarketCarDaoImpl(MarketCarDaoImpl marketCarDaoImpl) {
+		this.marketCarDaoImpl = marketCarDaoImpl;
+	}
+	
 }

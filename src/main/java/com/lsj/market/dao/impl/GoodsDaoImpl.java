@@ -67,6 +67,15 @@ public class GoodsDaoImpl implements GoodsDao{
 		tempFlower=(Flower) getSession().load(Flower.class, id);
 		return tempFlower;
 	}
+	
+	
+
+
+	@Override
+	public Flower queryByIdGet(int id) {
+		// TODO Auto-generated method stub
+		return (Flower) getSession().get(Flower.class, id);
+	}
 
 
 

@@ -22,9 +22,9 @@
 				<ul>
 					<li><a href="${pageContext.request.contextPath}/index.jsp">首页</a></li>
 					<li><a href="#">购物车</a></li>
-					<li><a href="${pageContext.request.contextPath}/web_resource/regist.jsp">注册</a></li>
+					<li><a href="${pageContext.request.contextPath}/web_resource/regist.jsp" target="update_ifr">注册</a></li>
 					<s:if test="#session.userAccount==null">
-						<li><a href="${pageContext.request.contextPath}/web_resource/login.jsp">登录</a></li>
+						<li><a href="${pageContext.request.contextPath}/web_resource/login.jsp" target="update_ifr">登录</a></li>
 					</s:if>
 					<s:else>
 						<li><a href='<s:url action="toUserDetailAction"></s:url>'><s:property value="#session.userAccount"/></a></li>

@@ -5,7 +5,21 @@
 <struts>
 	<constant name="struts.enable.DynamicMethodInvocation" value="true"></constant>
 	<constant name="struts.objectFactory" value="spring" />
-
+	<!-- 总是确保使用spring的自动装备策略 -->
+	<constant name="struts.objectFactory.spring.autoWire.alwaysRespect" value="true" />
+	
+	<package name="struts-global" namespace="/" extends="struts-default">
+		
+		<global-results>
+			<result name="userNotFound">/web_resource/error_jsp/user_not_found.jsp
+			</result>
+		</global-results>
+		
+		<global-exception-mappings>
+			<exception-mapping result="userNotFound" exception="com.lsj.market.exception.UserNotFoundException"></exception-mapping>
+		</global-exception-mappings>
+	</package>
+	
 	<package name="com.lsj.market.action" extends="struts-default">
 
 		<action name="toRegistAction" class="com.lsj.market.action.ToRegistAction">
@@ -17,7 +31,7 @@
 	</package>
 	
 	<!--User 管理-->
-	<package name="com.lsj.market.action.user" extends="struts-default">
+	<package name="com.lsj.market.action.user" extends="struts-global">
 		<action name="registAction" class="com.lsj.market.action.user.UserRegistAction" method="execute" >
 			<result name="success">/web_resource/useraction_success.jsp</result>
 			<result name="error">/error.jsp</result>
@@ -57,7 +71,7 @@
 	</package>
 	
 	<!-- Flower 管理-->
-	<package name="com.lsj.market.action.flower" extends="struts-default">
+	<package name="com.lsj.market.action.flower" extends="struts-global">
 		<!-- 跳转到Flower管理页面 -->
 		<action name="toFlowerManagerAction" class="com.lsj.market.action.flower.ToFlowerManagerAction">
 			<result name="success">/web_resource/flower_resource/flower_manager.jsp</result>
@@ -140,6 +154,29 @@
 			</result>
 			<result name="error">/error.jsp</result>
 		</action>
-		
 	</package>
+	
+	<!-- Order配置 -->
+	<package name="com.lsj.market.action.order" extends="struts-global" >
+	
+		<!-- marketCar Action -->
+		<action name="marketCarAddAction" class="com.lsj.market.action.order.MarketCarAddAction" >
+			<result name="success" type="redirectAction">
+				<param name="actionName">getFlowerInfoAction</param>
+			</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="getMarketCarAction" class="com.lsj.market.action.order.GetMarketCarAction">
+			<result name="success">/web_resource/order_resource/marketcar.jsp</result>
+			<!-- <exception-mapping result="error" exception="com.lsj.market.exception.UserNotFoundException"></exception-mapping> -->
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="marketCarDeleteAction" class="com.lsj.market.action.order.MarketCarDeleteAction">
+			<result name="success" type="redirectAction">
+				<param name="actionName">getMarketCarAction</param>
+			</result>
+			<result name="error"></result>
+		</action>
+	</package>
+	
 </struts>

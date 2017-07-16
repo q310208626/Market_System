@@ -20,4 +20,6 @@ public interface GoodsService {
 	
 	public Flower queryFlowerById(int id);
 	
+	public Flower queryFlowerByIdGet(int id);
+	
 }

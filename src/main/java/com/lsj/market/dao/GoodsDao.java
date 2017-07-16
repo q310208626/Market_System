@@ -56,11 +56,21 @@ public interface GoodsDao {
 	
 	/** 
 	* @Title: queryById 
-	* @Description: TODO 通过id查找
+	* @Description: TODO 通过id查找商品，没用到的属性不被加载
 	* @param @param id
 	* @param @return     
 	* @return Flower 
 	* @throws 
 	*/
 	public Flower queryById(int id);
+	
+	/** 
+	* @Title: queryByIdGet 
+	* @Description: TODO 通过id查找商品完整信息
+	* @param @param id
+	* @param @return     
+	* @return Flower 
+	* @throws 
+	*/
+	public Flower queryByIdGet(int id);
 }

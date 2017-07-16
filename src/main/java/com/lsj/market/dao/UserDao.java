@@ -23,6 +23,8 @@ public interface UserDao {
 	
 	public User queryById(int id);
 	
+	public User queryByIdGet(int id);
+	
 	public List<User> queryAll();
 	
 	public void update(User user);

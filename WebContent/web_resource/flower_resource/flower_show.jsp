@@ -19,46 +19,27 @@
 </style>
 </head>
 <body>
-	
-		<%-- <table border="1px">
-			<tr>
-				<td>商品ID</td>
-				<td>商品名称</td>
-				<td>商品价格</td>
-				<td>商品种类</td>
-				<td>商品图片</td>
-			</tr>
-			<s:iterator value="flowerList">
-			<tr>
-				<td><s:text name="%{id}" ></s:text></td>
-				<td><s:text name="%{name}" ></s:text></td>
-				<td><s:text name="%{price}"></s:text></td>
-				<s:if test="flowersCate.category==null||flowersCate.category==''">
-					<td><s:text name="未知"></s:text></td>
-				</s:if>
-				<s:else>
-					<td><s:text name="%{flowersCate.category}"></s:text></td>
-				</s:else>
-				<td class="flower_img"><img id="flower_img" alt="${name}" src="/market_system/imageuploads/${pictrueName}">  </td>
-			</tr>
-			</s:iterator>
-		</table> --%>
 		<table align="center">
 		<s:iterator value="flowerList" var="flower" status="st">
 			<s:if test="#st.index%4==0">
 				<tr>
 			</s:if>
 			<td>
+			
 			 <div class="flower_div">
+			 <form action="marketCarAddAction" onsubmit="return testNum(${id})" >
+				<s:hidden name="user.id" value="%{#session.userId}"></s:hidden> 
+			 	<s:hidden name="flower.id" value="%{id}"></s:hidden>
 				<img class="flower_img" alt="${name}" src="/market_system/imageuploads/${pictrueName}">
 				<p>
 					<span><s:property value="name"/></span>
 					<span>价格:<s:text name="%{price}"></s:text></span>
 				</p>
 				<p>
-					数量:<s:textfield maxlength="3" size="3" onkeydown="value=value.replace(/[^\d]/g,'')" theme="simple"></s:textfield>
+					数量:<s:textfield id="goodsNum%{id}" name="marketCar.goodNum" maxlength="3" size="3" onkeydown="value=value.replace(/[^\d]/g,'')" theme="simple"></s:textfield>
 					<s:submit value="添加购物" theme="simple" ></s:submit>
 				</p>
+			  </form>
 			 </div>
 			</td>
 			<s:if test="#st.index%4==3">
@@ -67,4 +48,15 @@
 		</s:iterator>
 		</table>
 </body>
+<script type="text/javascript">
+	function testNum(id){
+		var goodsNumTextfieldId='goodsNum'+id;
+		var goodsNumTextfield=document.getElementById(goodsNumTextfieldId);	
+		var goodsNum=goodsNumTextfield.value;
+		if(goodsNum==null||goodsNum<=0){
+			return false;	
+		}
+		return true;
+	}
+</script>
 </html>

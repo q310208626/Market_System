@@ -51,7 +51,13 @@ public class GoodsServiceImpl implements GoodsService{
 		Flower flower=goodsDaoImpl.queryById(id);
 		return flower;
 	}
+	
 
+	@Override
+	public Flower queryFlowerByIdGet(int id) {
+		// TODO Auto-generated method stub
+		return goodsDaoImpl.queryByIdGet(id);
+	}
 
 
 	public GoodsDaoImpl getGoodsDaoImpl() {

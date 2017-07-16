@@ -51,6 +51,12 @@ public class UserServiceImpl implements UserService{
 	}
 	
 	@Override
+	public User queryUserInfoGet(int id) {
+		// TODO Auto-generated method stub
+		return userDaoImpl.queryByIdGet(id);
+	}
+
+	@Override
 	public void updateUserInfo(User user) {
 		// TODO Auto-generated method stub
 		userDaoImpl.update(user);

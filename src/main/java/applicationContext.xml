@@ -56,7 +56,6 @@
 		<tx:attributes>
 			<tx:method name="get*" read-only="true" />
 			<tx:method name="*" /> 
-			
 		</tx:attributes>
 	</tx:advice>
 	 <tx:annotation-driven transaction-manager="transactionManager" />  
@@ -64,5 +63,22 @@
 		<aop:pointcut id="txPointcut"
 			expression="execution (* com.lsj.market.action..*.*(..))"/>
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="txPointcut" />
+	<!-- aop设置 -->	
+		<aop:aspect ref="isUserLoginAdvice">
+			<aop:pointcut  id="isUserLoginPointcut" 
+				expression="execution (* com.lsj.market.action..GetUser*.*(..)) 
+					or execution (* com.lsj.market.action..*Update*Action*.*(..)) 
+					or execution (* com.lsj.market.action..*Delete*Action*.*(..))
+					or execution (* com.lsj.market.action..GetMarketCar*.*(..))
+					or execution (* com.lsj.market.action..MarketCar*.*(..))
+					or execution (* com.lsj.market.action..ToFlower*.*(..))
+					or execution (* com.lsj.market.action..Flower*Add*.*(..))"/>
+			<aop:before method="isUserLogin" pointcut-ref="isUserLoginPointcut"/>
+		</aop:aspect>
 	</aop:config>
+	<!-- 声明advice Bean -->
+	<bean id="isUserLoginAdvice" class="com.lsj.market.aop.IsUserLoginAdvice"></bean>
+
+
+
 </beans>

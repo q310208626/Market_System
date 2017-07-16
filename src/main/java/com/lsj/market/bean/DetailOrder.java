@@ -1,19 +1,26 @@
 package com.lsj.market.bean;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
+import org.springframework.stereotype.Component;
+
+@Entity
+@Table
+@Component
 public class DetailOrder {
 	@Id
 	@Column(name="id")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	@ManyToOne
-	@JoinColumn()
+	@JoinColumn
 	private Order order;
 	@Column
 	private int goodsId;
@@ -21,6 +28,7 @@ public class DetailOrder {
 	private int goodsNum;
 	@Column
 	private int totalPrice;
+	
 	public int getId() {
 		return id;
 	}

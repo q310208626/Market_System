@@ -17,9 +17,9 @@
 			<div class="head_menu">
 				<ul>
 					<li><a href="${pageContext.request.contextPath}/index.jsp">首页</a></li>
-					<li><a href="#">购物车</a></li>
+					<li><a href="getMarketCarAction" target="log_reg_ifr">购物车</a></li>
 					<li><a href="${pageContext.request.contextPath}/web_resource/regist.jsp" target="log_reg_ifr">注册</a></li>
-					<s:if test="#session.userAccount==null">
+					<s:if test="#session.userId==null||#session.userId==0">
 						<li><a href="${pageContext.request.contextPath}/web_resource/login.jsp" target="log_reg_ifr">登录</a></li>
 					</s:if>
 					<s:else>
@@ -38,7 +38,7 @@
 				</ul>
 			</div>
 			<div id="content_show">
-				<iframe id="ifr" name="log_reg_ifr" src=""></iframe>
+				<iframe id="ifr" name="log_reg_ifr" src="getFlowerInfoAction" style="min-height: 500px" ></iframe>
 			</div>
 		</div>
 		<div id="content_foot"></div>

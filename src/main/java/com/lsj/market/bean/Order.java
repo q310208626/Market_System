@@ -2,12 +2,20 @@ package com.lsj.market.bean;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
+import org.springframework.stereotype.Component;
+
+@Entity
+@Table
+@Component
 public class Order {
 	@Id
 	@Column(name="id")
@@ -19,7 +27,7 @@ public class Order {
 	private String Adress;
 	@Column
 	private String phone;
-	@OneToMany
+	@OneToMany(cascade=CascadeType.ALL)
 	private List<DetailOrder> detailOrders;
 	
 	public int getUserId() {

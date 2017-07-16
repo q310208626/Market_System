@@ -68,6 +68,12 @@ public class UserDaoImpl implements UserDao{
 	}
 	
 	@Override
+	public User queryByIdGet(int id) {
+		// TODO Auto-generated method stub
+		return (User) getSession().get(User.class, id);
+	}
+
+	@Override
 	public List<User> queryAll() {
 		// TODO Auto-generated method stub
 		List<User> userList=null;
