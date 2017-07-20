@@ -24,6 +24,10 @@ public class MarketCarServiceImpl implements MarketCarService{
 	@Override
 	public void UpdateMarketCar(MarketCar marketCar) {
 		// TODO Auto-generated method stub
+		float price=marketCar.getFlower().getPrice();
+		int num=marketCar.getGoodNum();
+		float totalPrice=price*num;
+		marketCar.setTotalPrice(totalPrice);
 		marketCarDaoImpl.update(marketCar);
 	}
 

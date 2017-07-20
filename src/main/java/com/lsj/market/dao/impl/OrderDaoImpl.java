@@ -20,7 +20,7 @@ public class OrderDaoImpl implements OrderDao{
 	@Override
 	public Order queryOrderById(int id) {
 		// TODO Auto-generated method stub
-		return (Order) getSession().load(Order.class, id);
+		return (Order) getSession().get(Order.class, id);
 	}
 
 	@Override

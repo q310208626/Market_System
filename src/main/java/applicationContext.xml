@@ -54,8 +54,8 @@
 	</bean>
 	<tx:advice id="txAdvice" transaction-manager="transactionManager">
 		<tx:attributes>
-			<tx:method name="get*" read-only="true" />
-			<tx:method name="*" /> 
+			<tx:method name="get*" read-only="true"/>
+			<tx:method name="*" propagation="REQUIRED" /> 
 		</tx:attributes>
 	</tx:advice>
 	 <tx:annotation-driven transaction-manager="transactionManager" />  
@@ -72,7 +72,9 @@
 					or execution (* com.lsj.market.action..GetMarketCar*.*(..))
 					or execution (* com.lsj.market.action..MarketCar*.*(..))
 					or execution (* com.lsj.market.action..ToFlower*.*(..))
-					or execution (* com.lsj.market.action..Flower*Add*.*(..))"/>
+					or execution (* com.lsj.market.action..Flower*Add*.*(..))
+					or execution (* com.lsj.market.action..Get*Order*.*(..))
+					or execution (* com.lsj.market.action..ToUserDetail*.*(..))"/>
 			<aop:before method="isUserLogin" pointcut-ref="isUserLoginPointcut"/>
 		</aop:aspect>
 	</aop:config>

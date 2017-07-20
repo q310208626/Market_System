@@ -175,7 +175,29 @@
 			<result name="success" type="redirectAction">
 				<param name="actionName">getMarketCarAction</param>
 			</result>
-			<result name="error"></result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="marketCarUpdateAction" class="com.lsj.market.action.order.MarketCarUpdateAction">
+			<result name="success" type="redirectAction">
+				<param name="actionName">getMarketCarAction</param>
+			</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		
+		<!-- Order Action -->
+		<action name="orderAddAction" class="com.lsj.market.action.order.OrderAddAction">
+			<result name="success" type="redirectAction">
+				<param name="actionName">getMarketCarAction</param>
+			</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="getOrderAction" class="com.lsj.market.action.order.GetOrderAction">
+			<result name="success">/web_resource/order_resource/order_show.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<action name="getDetailOrderAction" class="com.lsj.market.action.order.GetDetailOrderAction">
+			<result name="success">/web_resource/order_resource/detailorder_show.jsp</result>
+			<result name="error">/error.jsp</result>
 		</action>
 	</package>
 	

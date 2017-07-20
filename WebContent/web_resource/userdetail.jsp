@@ -21,7 +21,7 @@
 			<div class="head_menu">
 				<ul>
 					<li><a href="${pageContext.request.contextPath}/index.jsp">首页</a></li>
-					<li><a href="#">购物车</a></li>
+					<li><a href="getMarketCarAction" target="update_ifr">购物车</a></li>
 					<li><a href="${pageContext.request.contextPath}/web_resource/regist.jsp" target="update_ifr">注册</a></li>
 					<s:if test="#session.userAccount==null">
 						<li><a href="${pageContext.request.contextPath}/web_resource/login.jsp" target="update_ifr">登录</a></li>
@@ -38,6 +38,7 @@
 				<ul>
 					<li><a href="getUserDetailAction" target="update_ifr">修改个人信息</a></li>
 					<li><a href="getUserPwdAction" target="update_ifr">修改密码</a></li>
+					<li><a href="getOrderAction" target="update_ifr">订单信息</a></li>
 				</ul>
 			</div>
 			<div id="content_show">

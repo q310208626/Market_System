@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
@@ -20,14 +21,15 @@ public class DetailOrder {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	@ManyToOne
-	@JoinColumn
+	@JoinColumn(name="orderId",nullable=false)
 	private Order order;
-	@Column
-	private int goodsId;
+	@ManyToOne
+	@JoinColumn(name="flowerId",nullable=false)
+	private Flower flower;
 	@Column
 	private int goodsNum;
 	@Column
-	private int totalPrice;
+	private float totalPrice;
 	
 	public int getId() {
 		return id;
@@ -41,11 +43,11 @@ public class DetailOrder {
 	public void setOrder(Order order) {
 		this.order = order;
 	}
-	public int getGoodsId() {
-		return goodsId;
+	public Flower getFlower() {
+		return flower;
 	}
-	public void setGoodsId(int goodsId) {
-		this.goodsId = goodsId;
+	public void setFlower(Flower flower) {
+		this.flower = flower;
 	}
 	public int getGoodsNum() {
 		return goodsNum;
@@ -53,12 +55,10 @@ public class DetailOrder {
 	public void setGoodsNum(int goodsNum) {
 		this.goodsNum = goodsNum;
 	}
-	public int getTotalPrice() {
+	public float getTotalPrice() {
 		return totalPrice;
 	}
-	public void setTotalPrice(int totalPrice) {
+	public void setTotalPrice(float totalPrice) {
 		this.totalPrice = totalPrice;
 	}
-	
-	
 }

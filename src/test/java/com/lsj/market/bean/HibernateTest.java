@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -30,8 +31,13 @@ import com.lsj.market.action.order.GetMarketCarAction;
 import com.lsj.market.bean.Flower;
 import com.lsj.market.bean.FlowersCate;
 import com.lsj.market.dao.impl.MarketCarDaoImpl;
+import com.lsj.market.service.impl.DetailOrderServiceImpl;
 import com.lsj.market.service.impl.GoodsServiceImpl;
+import com.lsj.market.service.impl.MarketCarServiceImpl;
+import com.lsj.market.service.impl.OrderServiceImpl;
 import com.lsj.market.service.impl.UserServiceImpl;
+
+import freemarker.template.Configuration;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -46,6 +52,12 @@ public class HibernateTest {
 	private UserServiceImpl userServiceImpl;
 	@Autowired
 	private GoodsServiceImpl goodsServiceImpl;
+	@Autowired
+	private MarketCarServiceImpl marketCarServiceImpl;
+	@Autowired
+	private OrderServiceImpl orderServiceImpl;
+	@Autowired
+	private DetailOrderServiceImpl detailOrderServiceImpl;
 	
 	private Flower flower;
 	private User user;
@@ -53,9 +65,8 @@ public class HibernateTest {
 	@Autowired
 	private MarketCarDaoImpl marketCarDaoImpl;
 	private MarketCar marketCar;
-	
-	
-	
+	private DetailOrder detailOrder;
+	private Order order;
 	public Session getSession(){
 		return sessionFactory.getCurrentSession();
 	}
@@ -64,13 +75,28 @@ public class HibernateTest {
 	@Before
 	public void before() {
 		
+		ApplicationContext applicationContext=new ClassPathXmlApplicationContext("classpath:applicationContext.xml");
 		
+		
+		marketCar=marketCarServiceImpl.queryMarketCarById(3);
+		user=userServiceImpl.queryUserInfoGet(113);
+		detailOrder=new DetailOrder();
+		detailOrder.setFlower(marketCar.getFlower());
+		detailOrder.setGoodsNum(marketCar.getGoodNum());
+		detailOrder.setTotalPrice(marketCar.getTotalPrice());
+		order=(Order) applicationContext.getBean("order");
 	}
 
 
 	@Test
 	public void test() {
-		
+		order.setUser(user);
+		order.setBuyDate(new Date());
+		List<DetailOrder> detailOrders=new ArrayList<DetailOrder>();
+		detailOrders.add(detailOrder);
+		order.setDetailOrders(detailOrders);
+		detailOrder.setOrder(order);
+		detailOrderServiceImpl.addDetailOrder(detailOrder);
 	}
 
 	@After
@@ -115,5 +141,38 @@ public class HibernateTest {
 	public void setMarketCarDaoImpl(MarketCarDaoImpl marketCarDaoImpl) {
 		this.marketCarDaoImpl = marketCarDaoImpl;
 	}
+
+
+	public MarketCarServiceImpl getMarketCarServiceImpl() {
+		return marketCarServiceImpl;
+	}
+
+
+	public void setMarketCarServiceImpl(MarketCarServiceImpl marketCarServiceImpl) {
+		this.marketCarServiceImpl = marketCarServiceImpl;
+	}
+
+
+	public OrderServiceImpl getOrderServiceImpl() {
+		return orderServiceImpl;
+	}
+
+
+	public void setOrderServiceImpl(OrderServiceImpl orderServiceImpl) {
+		this.orderServiceImpl = orderServiceImpl;
+	}
+
+
+	public DetailOrderServiceImpl getDetailOrderServiceImpl() {
+		return detailOrderServiceImpl;
+	}
+
+
+	public void setDetailOrderServiceImpl(
+			DetailOrderServiceImpl detailOrderServiceImpl) {
+		this.detailOrderServiceImpl = detailOrderServiceImpl;
+	}
+	
+	
 	
 }

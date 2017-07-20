@@ -2,6 +2,8 @@ package com.lsj.market.action.order;
 
 import java.util.List;
 
+import javax.crypto.Mac;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
@@ -10,6 +12,8 @@ import com.lsj.market.service.impl.MarketCarServiceImpl;
 import com.lsj.market.service.impl.UserServiceImpl;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+
+import freemarker.core.ReturnInstruction.Return;
 @Controller("getMarketCarAction")
 public class GetMarketCarAction extends ActionSupport{
 	@Autowired
@@ -18,7 +22,7 @@ public class GetMarketCarAction extends ActionSupport{
 	private UserServiceImpl userServiceImpl;
 	private List<MarketCar> marketCarList;
 	private int userId=0;
-	private String errorMSG="userNotFound";
+	private float allPrice=0;
 	
 	@Override
 	public String execute() throws Exception {
@@ -30,6 +34,7 @@ public class GetMarketCarAction extends ActionSupport{
 //		}
 		try {
 			marketCarList=marketCarServiceImpl.queryMarketCarByUserId(userId);
+			marketCarList.forEach(mac->allPrice+=mac.getTotalPrice());
 			return SUCCESS;
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -63,12 +68,16 @@ public class GetMarketCarAction extends ActionSupport{
 	public void setUserId(int userId) {
 		this.userId = userId;
 	}
-	public String getErrorMSG() {
-		return errorMSG;
+
+	public float getAllPrice() {
+		return allPrice;
 	}
-	public void setErrorMSG(String errorMSG) {
-		this.errorMSG = errorMSG;
+
+
+	public void setAllPrice(float allPrice) {
+		this.allPrice = allPrice;
 	}
+	
 	
 	
 }
