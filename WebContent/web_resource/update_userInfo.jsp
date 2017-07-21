@@ -10,7 +10,7 @@
 </head>
 <body>
 	<form action="userUpdateAction" method="post">
-		<table border="1px" background="#3aa">
+		<table border="1px">
 			<tr align="center">
 				<td colspan="2">用户信息</td>
 			</tr>

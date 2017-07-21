@@ -32,10 +32,11 @@
 		<div id="content_main">
 			<div id="catagory_div">
 				<ul>
-					<li><a href="toFlowerDirectionAction?direction=flowerinfo" target="manager_ifr">当前商品</a></li>
-					<li><a href="toFlowerDirectionAction?direction=flowerupdate" target="manager_ifr">管理更新</a></li>
-					<li><a href="toFlowerDirectionAction?direction=floweradd" target="manager_ifr">添加商品</a></li>
-					<li><a href="toFlowerDirectionAction?direction=flowercate" target="manager_ifr">商品种类</a></li>
+					<li><a href="toUserDetailAction" style="text-decoration: none" >返回</a></li>
+					<li><a href="toFlowerDirectionAction?direction=flowerinfo" target="manager_ifr" style="text-decoration: none">当前商品</a></li>
+					<li><a href="toFlowerDirectionAction?direction=flowerupdate" target="manager_ifr" style="text-decoration: none">管理更新</a></li>
+					<li><a href="toFlowerDirectionAction?direction=floweradd" target="manager_ifr" style="text-decoration: none">添加商品</a></li>
+					<li><a href="toFlowerDirectionAction?direction=flowercate" target="manager_ifr" style="text-decoration: none">商品种类</a></li>
 				</ul>
 			</div>
 			<div id="content_show">

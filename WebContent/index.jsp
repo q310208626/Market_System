@@ -32,10 +32,7 @@
 		</div>
 		<div id="content_main">
 			<div id="catagory_div">
-				<ul>
-					<li>asd</li>
-					<li>asd</li>
-				</ul>
+				<iframe id="cate_select_frame" src="getFlowerCateActionForIndex" style="height: 500px; width: 100%;"></iframe>
 			</div>
 			<div id="content_show">
 				<iframe id="ifr" name="log_reg_ifr" src="getFlowerInfoAction" style="min-height: 500px" ></iframe>

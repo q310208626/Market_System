@@ -26,6 +26,16 @@ public interface GoodsDao {
 	public List<Flower> queryAllFlowers();
 	
 	/** 
+	* @Title: queryFlowerByCateId 
+	* @Description: TODO 通过商品种类Id查询商品
+	* @param cateId
+	* @return 
+	* @return List<Flower> 
+	* 
+	*/
+	public List<Flower> queryFlowerByCateId(int cateId);
+	
+	/** 
 	* @Title: deleteFlower 
 	* @Description: TODO 删除花（商品）
 	* @param      

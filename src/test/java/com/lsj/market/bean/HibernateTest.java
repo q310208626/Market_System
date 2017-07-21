@@ -75,28 +75,14 @@ public class HibernateTest {
 	@Before
 	public void before() {
 		
-		ApplicationContext applicationContext=new ClassPathXmlApplicationContext("classpath:applicationContext.xml");
-		
-		
-		marketCar=marketCarServiceImpl.queryMarketCarById(3);
-		user=userServiceImpl.queryUserInfoGet(113);
-		detailOrder=new DetailOrder();
-		detailOrder.setFlower(marketCar.getFlower());
-		detailOrder.setGoodsNum(marketCar.getGoodNum());
-		detailOrder.setTotalPrice(marketCar.getTotalPrice());
-		order=(Order) applicationContext.getBean("order");
 	}
 
 
 	@Test
 	public void test() {
-		order.setUser(user);
-		order.setBuyDate(new Date());
-		List<DetailOrder> detailOrders=new ArrayList<DetailOrder>();
-		detailOrders.add(detailOrder);
-		order.setDetailOrders(detailOrders);
-		detailOrder.setOrder(order);
-		detailOrderServiceImpl.addDetailOrder(detailOrder);
+		int cateId=5;
+		List<Flower> flowers= goodsServiceImpl.getFlowerByCate(cateId);
+		System.out.println(flowers.size());
 	}
 
 	@After

@@ -13,11 +13,11 @@ public class GetFlowerCateAction extends ActionSupport{
 	@Autowired
 	private GoodsCateServiceImpl goodsCateServiceImpl;
 	private List<FlowersCate> flowersCateList;
-	
+	private List<FlowersCate> tempList;
 	@Override
 	public String execute() throws Exception {
 		// TODO Auto-generated method stub
-		List<FlowersCate> tempList=new ArrayList<FlowersCate>();
+		
 		try {
 			tempList=goodsCateServiceImpl.queryAllFlowersCates();
 			setFlowersCateList(tempList);
@@ -28,6 +28,17 @@ public class GetFlowerCateAction extends ActionSupport{
 		}
 		
 		
+	}
+	
+	public String indexExecute() throws Exception{
+		try {
+			tempList=goodsCateServiceImpl.queryAllFlowersCates();
+			setFlowersCateList(tempList);
+			return SUCCESS;
+		} catch (Exception e) {
+			// TODO: handle exception
+			return ERROR;
+		}
 	}
 
 	public GoodsCateServiceImpl getGoodsCateServiceImpl() {

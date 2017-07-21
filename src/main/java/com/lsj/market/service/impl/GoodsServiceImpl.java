@@ -22,6 +22,16 @@ public class GoodsServiceImpl implements GoodsService{
 	
 	
 	
+	
+	@Override
+	public List<Flower> getFlowerByCate(int cateId) {
+		// TODO Auto-generated method stub
+		return goodsDaoImpl.queryFlowerByCateId(cateId);
+	}
+
+
+
+
 	@Override
 	public void deleteFlower(int id) {
 		// TODO Auto-generated method stub

@@ -35,6 +35,20 @@ public class GoodsDaoImpl implements GoodsDao{
 	
 	
 	@Override
+	public List<Flower> queryFlowerByCateId(int cateId) {
+		// TODO Auto-generated method stub
+		StringBuilder queryBuilder=new StringBuilder();
+		queryBuilder.append("from ")
+					.append(Flower.class.getName())
+					.append(" where flowersCateId=:flowersCateId");
+		Query query=getSession().createQuery(queryBuilder.toString());
+		query.setInteger("flowersCateId", cateId);
+		return query.list();
+	}
+
+
+
+	@Override
 	public void deleteFlower(int id) {
 		// TODO Auto-generated method stub
 		Flower flower=(Flower) getSession().load(Flower.class,id);

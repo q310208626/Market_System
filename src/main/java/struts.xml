@@ -81,6 +81,10 @@
 			<result name="success">/web_resource/flower_resource/flower_show.jsp</result>
 			<result name="error">/error.jsp</result>
 		</action>
+		<action name="getFlowerByCateAction" class="com.lsj.market.action.flower.GetFlowerByCateAction">
+			<result name="success">/web_resource/flower_resource/flower_show.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
 		<!-- a标签重定向 -->
 		<action name="toFlowerDirectionAction" class="com.lsj.market.action.flower.ToFlowerDirectionAction">
 			<result name="flowerinfo" type="redirectAction">
@@ -142,6 +146,10 @@
 			<result name="success">/web_resource/flower_resource/flower_cate_show.jsp</result>
 			<result name="error">/error.jsp</result>
 		</action>
+		<action name="getFlowerCateActionForIndex" class="com.lsj.market.action.flower.GetFlowerCateAction" method="indexExecute">
+			<result name="success">/web_resource/flower_resource/cate_forindex.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
 		<action name="flowerCateDeleteAction" class="com.lsj.market.action.flower.FlowerCateDeleteAction">
 			<result name="success" type="redirectAction">
 				<param name="actionName">getFlowerCateAction</param>
@@ -154,6 +162,7 @@
 			</result>
 			<result name="error">/error.jsp</result>
 		</action>
+		
 	</package>
 	
 	<!-- Order配置 -->

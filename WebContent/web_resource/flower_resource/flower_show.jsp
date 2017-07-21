@@ -19,7 +19,7 @@
 </style>
 </head>
 <body>
-		<table align="center">
+		<table>
 		<s:iterator value="flowerList" var="flower" status="st">
 			<s:if test="#st.index%4==0">
 				<tr>

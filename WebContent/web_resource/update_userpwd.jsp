@@ -10,7 +10,7 @@
 </head>
 <body>
 	<form action="userUpdatePwdAction" method="post" onsubmit="return valiAndPost()" >
-		 <table border="1px" background="#3aa">
+		 <table border="1px">
 			<tr><td colspan="2" >密码修改</td></tr> 
 			<tr>
 				<td>id:</td><td><input type="text" name="user.id" value="${user.id}" readonly></td>

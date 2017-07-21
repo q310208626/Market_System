@@ -8,13 +8,14 @@ body{
 	clear:both;
 	width:1000px;
 	margin: 10px auto;
-	background-color: #90f1ae;
+	/* background-color: #dfffdf; */ 
+	background-image: url("/Market_System/pic_resource/content_background.jpg");
 	text-align: center;
 }
 
 
 #content_head{
-	
+
 }
 /* 头部图片 */
 .head_pictrue{
@@ -51,13 +52,14 @@ body{
 #content_main{
 	min-height:100px;
 	overflow: hidden;
+	 
 }
 
 #catagory_div{
 	float: left;
 	width:200px;
 	height:500px;
-	background-color: #98b2ff;
+	/* background-color: #98b2ff; */
 	
 }
 

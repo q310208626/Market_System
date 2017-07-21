@@ -42,7 +42,7 @@
 				</ul>
 			</div>
 			<div id="content_show">
-				<iframe id="ifr" name="update_ifr" src="getUserDetailAction"></iframe>
+				<iframe id="ifr" name="update_ifr" src="getUserDetailAction" height="500px" width="100%"></iframe>
 			</div>
 		</div>
 		<div id="content_foot"></div>
